@@ -4,7 +4,7 @@ from semver_bnf.exceptions import InvalidSemver
 
 
 class TestSemver(unittest.TestCase):
-    
+
     valid_versions = [
         "1.2.3",
         "1.2.0",
@@ -26,11 +26,13 @@ class TestSemver(unittest.TestCase):
             try:
                 SemanticVersion(version)
             except InvalidSemver:
-                self.fail(f"SemanticVersion reported {version} as being invalid!")
+                self.fail(
+                    f"SemanticVersion reported {version} as being invalid!")
 
     def test_invalid_versions(self):
         for version in self.invalid_versions:
             self.assertRaises(InvalidSemver, SemanticVersion, version)
+
 
 if __name__ == '__main__':
     unittest.main()
